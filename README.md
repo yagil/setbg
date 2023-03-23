@@ -18,6 +18,7 @@ setbg() {
   # Define color dictionary (extend this as needed)
   declare -A colors
   colors=(
+    ["black"]="0,0,0"
     ["blue"]="0,0,65535"
     ["red"]="65535,0,0"
     ["green"]="0,42685,0"
