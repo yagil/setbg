@@ -3,7 +3,8 @@ Set the background color of the current macOS Terminal window.
 
 ## Usage
 ```zsh
-$ setbg blue
+$ setbg indigo
+$ setbg "#4B0082"
 ```
 
 ## Installation
@@ -58,7 +59,7 @@ setbg() {
   # Check if input is a hex value
   elif [[ $1 =~ ^#?[0-9A-Fa-f]{6}$ ]]; then
     hex=${1#"#"}  # Remove the '#' if present
-    color="$(printf "0x${hex:0:2} * 257, 0x${hex:2:2} * 257, 0x${hex:4:2} * 257" | bc)"
+    color="$(printf "%d,%d,%d" $((0x${hex:0:2} * 65535 / 255)) $((0x${hex:2:2} * 65535 / 255)) $((0x${hex:4:2} * 65535 / 255)))"
   else
     echo "Error: Invalid color name or hex value.\n" >&2
     print_help
